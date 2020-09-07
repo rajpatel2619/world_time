@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:world_time/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -12,38 +9,33 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  void setupWorldTime() async{
-
-    WorldTime instance = WorldTime(location:'India',flag: 'india.png',url: 'Asia/Kolkata');
+  void setupWorldTime() async {
+    WorldTime instance = WorldTime(location: 'India', flag: 'india.png', url: 'Asia/Kolkata');
     await instance.getTime();
-//    Navigator.pushReplacementNamed(context,'/home',arguments: {
-//      'location':instance.location,
-//      'flag':instance.flag,
-//      'time':instance.time,
-//      'isDaytime':instance.isDaytime,
-//    });
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time,
+      'isDaytime': instance.isDaytime
+    });
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     setupWorldTime();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-      
-      child: SpinKitFadingFour(
-        color: Colors.blue,
-        size: 80.0,
-      ),
-
-      ),
-
+        child: SpinKitFadingFour(
+          color: Colors.blue[400],
+          size: 120.0,
+        )
+      )
     );
   }
 }
