@@ -6,16 +6,7 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  
-  void getData(){
-    //network request
-    Future.delayed(duration())
-  }
-  
-  @override
-  void initStatus(){
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
